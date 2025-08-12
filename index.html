@@ -79,9 +79,9 @@
             infoPanel.innerHTML = `
               <h3>Network Info</h3>
               <p><strong>Name:</strong> ${node.name}</p>
-              <p><strong>Title:</strong> ${node.title || 'N/A'}</p>
-              <p><strong>Role:</strong> ${node.role || 'N/A'}</p>
-              <p><strong>Website:</strong> ${node.website && node.website !== '' ? `<a href="${node.website}" target="_blank" rel="noopener noreferrer">${node.website.length > 30 ? `${node.website.substring(0, 30)}...` : node.website}</a>` : ''}</p>
+              <p><strong>Program:</strong> ${node.role || 'N/A'}</p>
+              <p><strong>Location:</strong> ${node.location || 'N/A'}</p>
+              <p><strong>Contact:</strong> ${node.website && node.website !== '' ? `<a href="mailto:${node.website}" target="_blank" rel="noopener noreferrer">${node.website.length > 30 ? `${node.website.substring(0, 30)}...` : node.website}</a>` : ''}</p>
               <button onclick="document.getElementById('info-panel').style.display='none'">Close</button>
             `;
             infoPanel.style.display = 'block';
