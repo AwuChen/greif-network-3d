@@ -11,8 +11,8 @@
 
   <script>
     const elem = document.getElementById('3d-graph');
-    const driver = neo4j.driver("neo4j+s://bb792eab.databases.neo4j.io", neo4j.auth.basic("neo4j", "NebHYzeCIGtTWMgjvo7XeX3oepHK4MGPzHjqWCqeYdk"));
-	const session = driver.session({database:"neo4j"});
+    const driver = neo4j.driver("bolt://demo.neo4jlabs.com", neo4j.auth.basic("gameofthrones", "gameofthrones"),{encrypted: true});
+	const session = driver.session({database:"gameofthrones"});
 	const start = new Date()
     session
       .run('MATCH (n)-->(m) RETURN { id: id(n), label:head(labels(n)), caption:n.name } as source, { id: id(m), label:head(labels(m)), caption:m.name } as target LIMIT $limit', {limit: neo4j.int(5000)})

@@ -36,7 +36,7 @@
   <div id="info-panel"></div>
 
   <script>
-    const driver = neo4j.driver("neo4j+s://bb792eab.databases.neo4j.io", neo4j.auth.basic("neo4j", "NebHYzeCIGtTWMgjvo7XeX3oepHK4MGPzHjqWCqeYdk"));
+    const driver = neo4j.driver("neo4j+s://bb792eab.databases.neo4j.io", neo4j.auth.basic("neo4j", "xQ3FQK4HZq5o-lbJJD5yHrTSdJQiejLW3iiejdoGs_E"));
     const session = driver.session({ database: "neo4j" });
     const start = new Date();
 
@@ -73,18 +73,6 @@
           .nodeLabel(node => window.innerWidth <= 768 ? `<div style="font-size: 40px;">${node.title || node.role || 'N/A'}</div>` : node.title || node.role || 'N/A')
           .onNodeHover(node => {
             Graph.nodeLabel(node ? (n => window.innerWidth <= 768 ? `<div style="font-size: 40px;">${n.title || n.role || 'N/A'}</div>` : n.title || n.role || 'N/A') : (n => n.role || 'N/A'));
-          })
-          .onNodeClick(node => {
-            const infoPanel = document.getElementById('info-panel');
-            infoPanel.innerHTML = `
-              <h3>Network Info</h3>
-              <p><strong>Name:</strong> ${node.name}</p>
-              <p><strong>Program:</strong> ${node.role || 'N/A'}</p>
-              <p><strong>Location:</strong> ${node.location || 'N/A'}</p>
-              <p><strong>Email:</strong> ${node.website && node.website !== '' ? `<a href="mailto:${node.website}" target="_blank" rel="noopener noreferrer">${node.website.length > 30 ? `${node.website.substring(0, 30)}...` : node.website}</a>` : ''}</p>
-              <button onclick="document.getElementById('info-panel').style.display='none'">Close</button>
-            `;
-            infoPanel.style.display = 'block';
           });
 
         session.close();
