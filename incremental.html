@@ -10,10 +10,10 @@
   <div id="3d-graph"></div>
 
   <script>
-    const driver = neo4j.driver("neo4j+s://bb792eab.databases.neo4j.io", neo4j.auth.basic("neo4j", "NebHYzeCIGtTWMgjvo7XeX3oepHK4MGPzHjqWCqeYdk"));
+    const driver = neo4j.driver("bolt://demo.neo4jlabs.com", neo4j.auth.basic("gameofthrones", "gameofthrones"),{encrypted: true});
     const Graph = ForceGraph3D()(document.getElementById('3d-graph')).graphData({ nodes: [], links: []});
 
-	const session = driver.session({database:"neo4j"});
+	const session = driver.session({database:"gameofthrones"});
 	const start = new Date()
     session
       .run('MATCH (n) WITH n MATCH (n)-->(m) RETURN id(n) as source, id(m) as target LIMIT $limit', {limit: neo4j.int(5000)})
